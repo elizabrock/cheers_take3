@@ -104,39 +104,9 @@ class TestCheer < Minitest::Test
     assert_equal actual, expected
   end
 
-  def test_poor_reading_comprehension
-    assert_raise(ArgumentError) do
-      Cheer.for_birthday("August 6th")
-    end
-  end
-
-  def test_non_birthday
-    assert_raise(ArgumentError) do
-      Cheer.for_birthday("Anne/*")
-    end
-  end
-
   def test_backwards_day
     assert_raise(ArgumentError) do
       Cheer.for_birthday("25/05")
-    end
-  end
-
-  def test_non_existant_day
-    assert_raise(ArgumentError) do
-      Cheer.for_birthday("02/31")
-    end
-  end
-
-  def test_whitespace_instead_of_day
-    assert_raise(ArgumentError) do
-      Cheer.for_birthday("  ")
-    end
-  end
-
-  def test_blank_instead_of_day
-    assert_raise(ArgumentError) do
-      Cheer.for_birthday("")
     end
   end
 end

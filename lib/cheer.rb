@@ -1,8 +1,20 @@
+require_relative 'birthday_parser'
+
 class Cheer
   AN_LETTERS = "HALFNORSEMIX"
 
   def self.for_birthday(birthday)
-    "Awesome! Your birthday is in 1 day! Happy Birthday in advance!"
+    today = Date.today
+    next_birthday = BirthdayParser.parse(birthday)
+    difference = next_birthday - today
+    case difference
+    when 0
+      # Today is their birthday
+    when 1
+      #Use the singular?
+    else
+      #Use the plural?
+    end
   end
 
   def self.for_person(name)
