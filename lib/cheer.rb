@@ -1,7 +1,14 @@
 class Cheer
+  AN_LETTERS = "HALFNORSEMIX"
   def self.for_person(name)
-    "Give me an.. E!\n" +
-    "Give me a... D!\n" +
-    "Ed's just GRAND!"
+    name.chomp!
+    adjusted_name = name.upcase.gsub(/[^A-Z]*/,'')
+    raise ArgumentError if adjusted_name.empty?
+    output = ""
+    adjusted_name.each_char do |char|
+      article = (AN_LETTERS.include? char) ? "an.." : "a..."
+      output << "Give me #{article} #{char}!\n"
+    end
+    output + "#{name}'s just GRAND!"
   end
 end
