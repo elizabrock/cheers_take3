@@ -5,8 +5,6 @@ require_relative 'lib/cheer'
 puts "Hello, what's your name?"
 name = gets
 puts Cheer.for_person(name)
-# THIS IS COMMENTED AS AN EXAMPLE ONLY
-# Don't commit commented out code!
-# puts "Hey #{name}, what's your birthday (mm/dd)?"
-# birthday_string = gets
-# puts Cheer.for_birthday(birthday_string)
+puts "Hey #{name}, what's your birthday? (mm/dd)"
+birthday_string = gets
+puts Cheer.for_birthday(birthday_string)
