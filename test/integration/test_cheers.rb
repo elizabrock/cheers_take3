@@ -53,7 +53,11 @@ class TestCheers < Minitest::Test
       expected << "Ed's just GRAND!\n"
       expected << "Hey Ed, what's your birthday? (mm/dd)\n"
       pipe.puts "25/05"
-      expected << "I'm sorry, I don't understand :( Try again next time.\n"
+      expected << "I couldn't understand that. Could you give that to me in mm/dd format?\n"
+      pipe.puts "12/2001"
+      expected << "I couldn't understand that. Could you give that to me in mm/dd format?\n"
+      pipe.puts "05/25"
+      expected << "Awesome! Your birthday is in 20 days! Happy Birthday in advance!\n"
       pipe.close_write
       shell_output = pipe.read
     end
