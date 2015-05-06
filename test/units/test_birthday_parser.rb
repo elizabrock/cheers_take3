@@ -1,4 +1,5 @@
 require_relative '../test_helper'
+require_relative '../../lib/birthday_parser'
 
 class TestBirthdayParser < Minitest::Test
   def test_parse_feb_29
