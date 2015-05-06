@@ -6,14 +6,15 @@ class Cheer
   def self.for_birthday(birthday)
     today = Date.today
     next_birthday = BirthdayParser.parse(birthday)
+    raise ArgumentError if next_birthday.nil?
     difference = next_birthday - today
     case difference
     when 0
-      # Today is their birthday
+      "Awesome! Your birthday is today! Happy Birthday!"
     when 1
-      #Use the singular?
+      "Awesome! Your birthday is in 1 day! Happy Birthday in advance!"
     else
-      #Use the plural?
+      "Awesome! Your birthday is in #{difference.to_i} days! Happy Birthday in advance!"
     end
   end
 

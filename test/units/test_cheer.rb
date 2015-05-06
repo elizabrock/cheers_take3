@@ -81,31 +81,35 @@ class TestCheer < Minitest::Test
   end
 
   def test_birthday_today
-    actual = Cheer.for_birthday("05/05")
+    today = Date.today
+    actual = Cheer.for_birthday("#{today.month}/#{today.day}")
     expected = "Awesome! Your birthday is today! Happy Birthday!"
     assert_equal actual, expected
   end
 
   def test_birthday_tomorrow
-    actual = Cheer.for_birthday("05/06")
+    tommorrow = Date.today + 1
+    actual = Cheer.for_birthday("#{tommorrow.month}/#{tommorrow.day}")
     expected = "Awesome! Your birthday is in 1 day! Happy Birthday in advance!"
     assert_equal actual, expected
   end
 
   def test_birthday_yesterday
-    actual = Cheer.for_birthday("05/04")
-    expected = "Awesome! Your birthday is in 364 days! Happy Birthday in advance!"
+    yesterday = Date.today - 1
+    actual = Cheer.for_birthday("#{yesterday.month}/#{yesterday.day}")
+    expected = "Awesome! Your birthday is in 365 days! Happy Birthday in advance!"
     assert_equal actual, expected
   end
 
   def test_birthday_in_near_future
-    actual = Cheer.for_birthday("06/02")
+    near_future = Date.today + 28
+    actual = Cheer.for_birthday("#{near_future.month}/#{near_future.day}")
     expected = "Awesome! Your birthday is in 28 days! Happy Birthday in advance!"
     assert_equal actual, expected
   end
 
   def test_backwards_day
-    assert_raise(ArgumentError) do
+    assert_raises(ArgumentError) do
       Cheer.for_birthday("25/05")
     end
   end
